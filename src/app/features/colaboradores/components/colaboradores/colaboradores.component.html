@@ -1,0 +1,28 @@
+<h1>{{title}}</h1>
+
+<div class="container">
+  <table>
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nome</th>
+      <th *ngIf="exibeColaborador">Salario</th>
+      <th>Cargo</th>
+      <th>Modelo de Trabalho</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let colaborador of colaboradores">
+      <td>{{ colaborador.id }}</td>
+      <td>{{ colaborador.nome }}</td>
+      <td *ngIf="exibeColaborador">{{ colaborador.salario }}</td>
+      <td>{{ colaborador.cargo }}</td>
+      <th
+        [ngClass]="{'home-office':colaborador.homeOffice,'hibrido':!colaborador.homeOffice}">{{colaborador.homeOffice ? 'Home Office' : 'Híbrido'}}</th>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+<button (click)="exibeColaboradorSimNao()">Exibir Salário</button>
+
